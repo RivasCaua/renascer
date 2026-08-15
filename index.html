@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#35070A">
+<title>Renascer · Vigília</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --papel:#F3EDEA;
+    --papel-campo:#FDFAF9;
+    --tinta:#1C0405;
+    --tinta-suave:#7A6360;
+    --linha:#DCD0CB;
+    --vermelho:#A8141A;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--papel);
+    color:var(--tinta);
+    font-size:15px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:620px;margin:0 auto;padding:56px 24px 96px}
+
+  /* ---------- capa / marca ---------- */
+  .capa{background:#35070A;padding:48px 24px;text-align:center}
+  .capa-inner{max-width:620px;margin:0 auto}
+  .capa img{display:block;width:100%;max-width:190px;margin:0 auto}
+  .oculto{
+    position:absolute;width:1px;height:1px;overflow:hidden;
+    clip:rect(0 0 0 0);white-space:nowrap
+  }
+
+  /* ---------- carta ---------- */
+  .ref{
+    display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--vermelho);margin-bottom:16px
+  }
+  .carta h2{font-size:25px;font-weight:600;letter-spacing:-.02em;line-height:1.3}
+  .carta p{color:var(--tinta-suave);margin-top:16px;font-size:15px}
+
+  /* ---------- pergunta ---------- */
+  .pergunta{margin-top:48px;padding-top:40px;border-top:1px solid var(--linha)}
+  .pergunta h3{font-size:21px;font-weight:600;letter-spacing:-.01em;line-height:1.35}
+  .pergunta .dica{color:var(--tinta-suave);font-size:14px;margin:12px 0 24px}
+
+  textarea{
+    font-family:inherit;font-size:15px;line-height:1.7;color:var(--tinta);
+    background:var(--papel-campo);border:1px solid var(--linha);border-radius:0;
+    padding:16px 18px;width:100%;min-height:230px;resize:vertical;
+    outline:none;transition:border-color .15s;display:block
+  }
+  textarea::placeholder{color:#B0A19D}
+  textarea:focus{border-color:var(--vermelho)}
+
+  .anonimo{
+    display:flex;gap:9px;align-items:baseline;
+    font-size:12.5px;color:var(--tinta-suave);margin-top:14px
+  }
+  .anonimo svg{flex:none;transform:translateY(2px)}
+
+  .erro{
+    display:none;font-size:13.5px;color:var(--vermelho);
+    border-left:2px solid var(--vermelho);padding-left:14px;margin-top:22px
+  }
+  .erro.on{display:block}
+
+  /* ---------- acoes ---------- */
+  .acoes{margin-top:36px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .btn{
+    font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;
+    border-radius:0;background:var(--vermelho);color:var(--papel);
+    border:1px solid var(--vermelho);padding:13px 30px;transition:.15s
+  }
+  .btn:hover{background:var(--tinta);border-color:var(--tinta)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .btn:disabled:hover{background:var(--vermelho);border-color:var(--vermelho)}
+  .acoes small{color:var(--tinta-suave);font-size:12.5px}
+
+  /* ---------- sucesso ---------- */
+  .sucesso{display:none}
+  .sucesso.on{display:block}
+  .sucesso h2{font-size:25px;font-weight:600;letter-spacing:-.02em}
+  .sucesso p{color:var(--tinta-suave);margin-top:14px;max-width:44ch}
+
+  footer{
+    margin-top:72px;padding-top:22px;border-top:1px solid var(--linha);
+    font-size:12.5px;color:var(--tinta-suave)
+  }
+
+  @media (max-width:600px){
+    .capa{padding:34px 22px}
+    .capa img{max-width:150px}
+    .wrap{padding:44px 22px 72px}
+    .carta h2{font-size:22px}
+    .pergunta h3{font-size:19px}
+  }
+</style>
+</head>
+<body>
+
+<header class="capa">
+  <div class="capa-inner">
+    <img src="logo-renascer.png" alt="Grupo Renascer">
+    <h1 class="oculto">Grupo Renascer</h1>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <main id="conteudo">
+    <div class="carta">
+      <span class="ref">Vigília · Preparação</span>
+      <h2>Querido componente,</h2>
+      <p>
+        Estamos nos preparando para viver juntos a nossa Vigília, um momento especial
+        de preparação para o nosso encontro e de abertura àquilo que Deus deseja
+        realizar em nós.
+      </p>
+      <p>
+        Antes de vivermos essa experiência, queremos conhecer um pouco o coração de
+        cada um. Por isso, pedimos que você responda com sinceridade e liberdade à
+        pergunta abaixo. A resposta será totalmente anônima e não existe resposta
+        certa ou errada, queremos saber como você, hoje, enxerga e experimenta o
+        Espírito Santo na sua vida.
+      </p>
+    </div>
+
+    <form id="form" class="pergunta">
+      <span class="ref">Pergunta</span>
+      <h3><label for="resposta">Para você, o que é o Espírito Santo?</label></h3>
+      <p class="dica">Responda a partir daquilo que você realmente pensa e vive. ❤️‍🔥</p>
+
+      <textarea id="resposta" name="resposta" required
+        placeholder="Escreva com suas palavras, sem pressa."></textarea>
+
+      <div class="anonimo">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7A6360" stroke-width="2" aria-hidden="true">
+          <rect x="4" y="10" width="16" height="11" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+        </svg>
+        <span>Resposta anônima.</span>
+      </div>
+
+      <p class="erro" id="erro"></p>
+
+      <div class="acoes">
+        <button type="submit" class="btn" id="enviar">Enviar resposta</button>
+      </div>
+    </form>
+  </main>
+
+  <div class="sucesso" id="sucesso">
+    <span class="ref">Recebido</span>
+    <h2>Obrigado por compartilhar.</h2>
+    <p>
+      Sua resposta chegou de forma anônima e vai ajudar a preparar a nossa Vigília.
+      Que o Espírito Santo acenda em nós o Seu fogo.
+    </p>
+  </div>
+
+  <footer>Grupo de Jovens Renascer</footer>
+
+</div>
+
+<script>
+  // Cole aqui a URL do app do Apps Script (a que termina em /exec).
+  // O passo a passo está em COMO-PUBLICAR.md
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyg_7CJCXNgJyr1PN1pypcJ0F8rofHwmUYmaqL5ncxG9hw3Oh5ppG4-iEtRGlhjHLlZOw/exec';
+
+  const form   = document.getElementById('form');
+  const campo  = document.getElementById('resposta');
+  const botao  = document.getElementById('enviar');
+  const erro   = document.getElementById('erro');
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const texto = campo.value.trim();
+    if(!texto) return;
+
+    erro.classList.remove('on');
+    botao.disabled = true;
+    botao.textContent = 'Enviando...';
+
+    try{
+      if(!ENDPOINT) throw new Error('ENDPOINT não configurado');
+
+      const r = await fetch(ENDPOINT, {
+        method: 'POST',
+        body: new URLSearchParams({ resposta: texto })
+      });
+      if(!r.ok) throw new Error('HTTP ' + r.status);
+
+      document.getElementById('conteudo').style.display = 'none';
+      document.getElementById('sucesso').classList.add('on');
+      window.scrollTo({top:0, behavior:'smooth'});
+
+    }catch(err){
+      // nada é apagado: o texto continua no campo para tentar de novo
+      botao.disabled = false;
+      botao.textContent = 'Tentar de novo';
+      erro.textContent = 'Não consegui enviar sua resposta agora. '
+        + 'Verifique sua conexão e toque em "Tentar de novo". '
+        + 'Seu texto continua aqui, não se perdeu.';
+      erro.classList.add('on');
+      console.error(err);
+    }
+  });
+</script>
+</body>
+</html>
